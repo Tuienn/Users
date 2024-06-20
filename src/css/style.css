@@ -1,0 +1,345 @@
+/* Xử lý phần header */
+#header {
+    /* Vị trí */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    /* Cấu trúc */
+    height: var(--header-height);
+    box-shadow: 0px 0px 40px 10px var(--box-shadow-color);
+    background-color: var(--black-color);
+
+    /* Đặc tính */
+    display: flex;
+    /* Set các con nằm ngàng */
+    position: relative;
+    /* Xóa xong cái này ảo ma vãi */
+    /* Khi này chặn container ăn vào header */
+
+    justify-content: space-between;
+    /* Đăỷ xa 2 phần ra 2 hướng */
+    
+}
+
+/* Nửa bên trái header */
+#nav {
+    /* Đặc tính */
+    display: flex;
+    /* Set các con nằm ngang */
+    position: relative;
+    /* Chiếm không gian riêng biệt, không ảnh hưởng các phần tử khác*/
+    /* Ở đây hình như có hay không cũng được:)) */
+}
+
+/* Các lựa chọn trên header */
+#nav>li,
+.header_logo_user li {
+    position: relative;
+    /* Chiếm không gian riêng biệt, không ảnh hưởng các phần tử khác*/
+    /* Để dùng kết hợp với subnav */
+}
+
+/* Logo chính và logo user */
+.header_logo {
+    /* Cấu trúc */
+    width: var(--header-height);
+    height: var(--header-height);
+
+    /* Chữ*/
+    color: var(--white-color);
+    font-size: 30px;
+
+    /* Đặc tính */
+    /* 3 dòng căn giữa logo*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Các lựa chọn ở bên trái header - nav */
+#nav>li{
+    /* Chữ */
+    line-height: var(--header-height);
+    /* Content chữ sẽ chiếm cả thẻ chứa nó (được căn giữa)*/
+    font-weight: bold;
+    color: white;
+    
+    /* Cấu trúc */
+    width: 180px;
+    text-align: center;
+
+    /* Đặc tính */
+    display: block;
+    /* Bỏ dấu đầu câu mặc định của li */
+    /* Mỗi 1 li là 1 khối riêng biệt */
+}
+
+/* Khi nav>li hover thì subnav */
+#nav>li:hover .subnav, .header_logo:hover .subnav{
+    display: grid;
+    z-index: 1;
+    /* Tách thành 2 dòng lựa chọn */
+}
+
+/* Hover vào các lựa chọn trên header */
+#nav>li:hover,
+.header_logo_user:hover {
+    /* Chữ */
+    color: var(--nav-hover-color);
+
+    /* Đặc tính */
+    cursor: pointer;
+}
+
+#nav>li:hover .nav_li_content,
+.header_logo_user:hover .nav_li_content{
+    /* Hiệu ứng */
+    transform: translateY(-2px);
+    transition: all ease-in-out 0.2s;
+    /* Hiệu ứng cho chữ đi lên và subnav không đi theo*/
+}
+
+/* Xử lý subnav lựa chọn */
+/* Các subnav Có thể tái sử dụng lại */
+/* .subnav {
+    Đã viết trong base.css
+}
+
+.subnav li {
+    Đã viết trong base.css
+} */
+
+#nav .subnav li, .header_logo_user .subnav li{
+    /* 1 nửa đã viết trong base */
+    font-weight: bold;
+}
+
+/* Xử lý phần logo*/
+/* .header_logo_user {
+    Đã xử lý bên trên
+} */
+
+/* .header_logo_user:hover {
+     đã xử lý bên trên 
+} */
+
+.header_logo_user .subnav {
+    /* Căn vị trí bên phải */
+    right: 0;
+}
+
+.header_logo_user .subnav li{
+    /* Đã viết 1 nửa trên cung với #nav .subnav li*/
+    text-align: right;
+    line-height: var(--header-height);
+}
+
+/* Xử lý phần modal thông tin cá nhân*/
+/* 2. Modal */
+/* Lớp modal chiêm full màn hình, chặn mọi thao tác*/
+.modal {
+    /* Đặc tính */
+    display: none;
+    position: fixed;
+    /* Tạo phần tử có vị trí cố định */
+
+    /* Vị trí */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* 4 chỉ số chiếm full màn hình */
+}
+
+/* Lớp phủ nhìn xuyên qua */
+.modal_overlay {
+    /* Đặc tính */
+    position: absolute;
+    /* Con kế thừa thuộc tính cha (.modal) */
+    width: 100%;
+    height: 100%;
+    /* Chiều dài và rộng theo cha */
+
+    /* Màu nền trong suốt */
+    background: rgb(0, 0, 0, 0.4);
+    /* Màu phủ trong suốt */
+}
+
+/* Xử lý modal_body*/
+/* Hiệu ứng xuất hiện*/
+@keyframes Growth {
+    from {
+        opacity: 0;
+        /*Làm mờ*/
+        transform: scale(0);
+        /* To dần */
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Phần chính để chứa full nội dung */
+.modal_body {
+    /* Cấu trúc */
+    background-color: var(--white-color);
+    border-radius: 20px;
+    padding: 30px;
+
+    /* Vị trí */
+    margin: auto;
+    /* Căn giữa nội dung toàn trang*/
+
+    /* Đặc tính */
+    position: relative;
+    /* Không ảnh hưởng kích thước phần tử khác, cũng giúp modal_body nổi lên trên modal_overlay*/
+    z-index: 2;
+    /* set lớn hơn của #nav>li */
+    /* z-index default = 0 */
+    /* Sử dụng để đẩy modal_body lên trên gần mắt người dùng */
+
+    /* Hiệu ứng */
+    animation: Growth ease-in 0.22s;
+    /*Hiệu ứng ảnh to dần  */
+}
+
+/* Gần như modal_form */
+.infor_form {
+    width: 730px;
+    display: block;
+}
+/* Thẻ div chứa nút X */
+.modal_close { 
+    text-align: right;
+}
+.modal_close>i{
+    cursor: pointer;
+}
+
+/* Form container + form chứa ảnh */
+.infor_form_container_img{
+    display: flex;
+    /* 2 phần container và img được set nằm ngang */
+}
+
+/* XỬ lý khung hình ảnh bên phải form */
+.infor_form_img{
+    /* Cấu trúc */
+    width: calc(100% - 45% - 40px);
+    /* width infor_form - with container - margin-left */
+    background-color: var(--button-hover-color);
+    border-radius: 20px;
+    
+    /* Vị trí */
+    margin-left: 40px;
+    /* Tách biệt với container */
+
+    /* Đặc tính */
+    display: grid;
+    /* Tách phần ảnh và nội dung chữ */
+    justify-content: center;
+    /* Căn giữa nội dung chữ theo chiều dọc */
+}
+
+/* Xử lý ảnh chèn vào */
+.infor_form_img_PNG{
+    width: 100%;
+}
+/* Xử lý text */
+.infor_form_img>h1{
+    text-align: center;
+    height: 15px;
+}
+.infor_form_img>h3{
+    text-align: center;
+}
+
+/* Container = Title + GroupInputs + button */
+.infor_container{
+    width: 45%;
+}
+
+/* Title information */
+.infor_container_title{
+    display: flex;
+    margin-bottom: 20px;
+}
+.infor_container_title>h1{
+    font-weight: 700;
+}
+/* Nhóm các input nhập vào */
+.group_input {
+    height: 90px;
+    box-sizing: border-box;
+}
+/* Tiều đề của input nhập vào */
+.modal_input_title_text {
+    font-size: 1.3rem;
+    height: 20px;
+    margin-bottom: 5px;
+}
+
+.input_text_error{
+    font-style: italic;
+    font-size: 0.8rem;
+    color: var(--error-text-color);
+}
+
+.input_text_gender{
+    width: 50%;
+    display: flex;
+    overflow: hidden;
+}
+
+.infor_container_confirm {
+    margin-top: 20px;
+}
+
+/* .input_title_text_gender:hover .subnav {
+    display: grid;
+} */
+
+.infor_container_confirm_btn{
+    margin-top: 15px;
+    width: 100%;
+}
+
+.container{
+    background: var(--linear-main-background);
+    height: calc(100vh - var(--header-height));
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_main{
+    width: 95%;
+    height: 90%;
+
+    display: flex;
+    position: relative;
+}
+
+.container_main_first{
+    background-color: var(--white-color);
+    width: 42%;
+    height: 100%;
+    position: absolute;
+    border-radius: 20px;
+}
+
+.container_main_second{
+    background-color: var(--white-color);
+    width: 55%;
+    height: 100%;
+    
+    top: 0;
+    right: 0;
+    position: absolute;
+    border-radius: 20px;
+}

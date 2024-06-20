@@ -1,0 +1,137 @@
+:root {
+    --white-color: white;
+    --black-color:  rgb(31, 31, 31);
+
+    --white-background-color: rgb(245, 242, 242);
+    --linear-main-background: linear-gradient(-45deg, #18A5A7, #B6C0C5);
+
+    --box-shadow-color: rgba(2, 1, 1, 0.4);
+    --border-color: gray;
+
+    --nav-hover-color: #70B3B5;
+    /* Màu này dùng luôn cho button */
+    --button-hover-color: #f1b38a;
+    --error-text-color: red;
+
+    --header-height: 52px;
+    --modal-input-height: 45px;
+}
+
+/* Reset CSS */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+    /* Kế thừa box-sizing của cha */
+}
+
+html {
+    /* Cấu trúc */
+    width: 100%;
+
+    /* Chữ */
+    font-size: 100%;
+    /* Mặc định là 16px */
+    line-height: 1.25rem;
+    /*rem phụ thuộc vào thẻ html*/
+    font-family: 'rubik', sans-serif;
+    /* Phông chữ của Cảnh Toàn */
+    color: var(--text-color);
+
+    /* Đặc tính */
+    box-sizing: border-box;
+    /*Nếu thay đổi padding, border thì phần tử giữ nguyên kích thước tổng thể ban đầu*/
+    scroll-behavior: smooth;
+    /* scroll trang web mượt hơn */
+} 
+
+body{
+    margin: 0;
+    /* Thẻ body ở màn hình lớn sẽ có margin */
+}
+
+a{
+    text-decoration: none;
+    color: var(--black-color);
+}
+
+/* Tái sử dụng */
+.input_text{
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 1px black;
+    width: 100%;
+    background-color: var(--white-color);
+}
+
+/* Button tái sử dụng */
+.btn{
+    /* Cấu trúc */
+    height: var(--modal-input-height);
+    border-radius: 20px;
+    background-color: var(--nav-hover-color);
+
+    /* Đặc tính */
+    /* 3 dòng để căn chính giữa nội dung nút */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Chữ */
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--white-color);
+}
+
+.btn:hover{
+    cursor: pointer;
+    /* Con trỏ chuột bàn tay */
+    background-color: var(--button-hover-color);
+    color: #18A5A7;
+
+    transition: all ease-in-out 0.2s;
+}
+
+/* Subnav tái sử dụng */
+.subnav {
+    /* Đặc tính */
+    display: none;
+    position: absolute;
+    /* Con kế thừa cha */
+    text-align: left;
+    /* Căn lề text sáng trái */
+    
+    /* Cấu trúc*/
+    background-color: white;
+    box-shadow: 0px 10px 20px 1px var(--box-shadow-color);
+    width: 15rem;
+
+    /* Vị trí */
+    top: 100%;
+    /* Để thẻ con subnav con này ngay dưới cùng thẻ cha */
+}
+
+.subnav li {
+    /* Cấu trúc */
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    /* Đặc tính*/
+    display: block;
+    /* Xóa dấu đầu dòng của li */
+
+    /* Chữ*/
+    font-size: 1rem;
+    color: var(--black-color);
+    /* align-items: center; */
+    /* Không cần căn giữa này vì đã có line-height ở từng thẻ li trong style.css */
+}
+
+.subnav li:hover{
+    background-color: #bacdcc;
+
+    /* Hiệu ứng */
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+}
