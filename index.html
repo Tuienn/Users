@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CommonForm</title>
     <!-- Link css -->
-    <link rel="stylesheet" href="/Users/src/css/base.css">
-    <link rel="stylesheet" href="/Users/src/css/style.css">
-    <link rel="stylesheet" href="/Users/vendors/calendar/calendar.css">
+    <link rel="stylesheet" href="src/css/base.css">
+    <link rel="stylesheet" href="src/css/style.css">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="pages/student/student.css">
+    <link rel="stylesheet" href="pages/parent/parent.css">
+    <link rel="stylesheet" href="pages/modalInfor/modal.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body>
     <div class="main">
 
         <!-- Nội dung header -->
         <div id="header">
             <ul id="nav">
-                <li id="">
-                    <div class="nav_li_content">THANH TOÁN</div> 
-                    <!-- Đặt thẻ div ở đây để xử lý hover -->
-                </li>
-                <li>   
+                <li>
                     <div class="nav_li_content">QUẢN LÝ TKB
-                    <!-- Đặt thẻ div ở đây để xử lý hover, khi chữ đi lên thì subnav không đi theo-->
+                        <!-- Đặt thẻ div ở đây để xử lý hover, khi chữ đi lên thì subnav không đi theo-->
                         <i class="fa-solid fa-angle-down" style="font-weight: bolder; padding-left: 5px;"></i>
-                    </div> 
-                    
+                    </div>
+
                     <ul class="subnav">
-                        <li id="">Con 1</li>
-                        <li id="">Con 2</li>
+                        <li class="nav_subnav_liSelect" id="select_1">Con 1</li>
+                        <li class="nav_subnav_liSelect" id="select_2">Con 2</li>
                     </ul>
+                </li>
+                <li id="">
+                    <div class="nav_li_content nav_li_content_pay">THANH TOÁN</div>
+                    <!-- Đặt thẻ div ở đây để xử lý hover -->
                 </li>
             </ul>
             <div class="header_logo header_logo_user">
@@ -41,8 +45,10 @@
                 <!-- Đặt thẻ div ở đây để xử lý hover, khi logo đi lên thì subnav không đi theo-->
 
                 <ul class="subnav">
-                    <li id="subnav_li_infor">THÔNG TIN CÁ NHÂN   |<i class="fa-solid fa-gear", style="padding-left: 5px;"></i></li>
-                    <li id="subnav_li_logout">ĐĂNG XUẤT  |<i class="fa-solid fa-right-from-bracket", style="padding-left: 5px;"></i></li>
+                    <li id="subnav_li_infor">THÔNG TIN CÁ NHÂN |<i class="fa-solid fa-gear" ,
+                            style="padding-left: 5px;"></i></li>
+                    <li id="subnav_li_logout">ĐĂNG XUẤT |<i class="fa-solid fa-right-from-bracket" ,
+                            style="padding-left: 5px;"></i></li>
                 </ul>
             </div>
         </div>
@@ -50,86 +56,20 @@
         <!-- Nội dung chính-->
         <div class="container">
             <div class="container_main">
-                <div class="container_main_first"></div>
-                <div class="container_main_second"></div>
+                <div class="container_main_function">
+                    <!-- Route nội dung vào đây -->
+                </div>
             </div>
         </div>
 
         <!-- Lớp modal cho thông tin cá nhân-->
-         <div class="modal">
-            <!-- Lớp phủ mờ -->
-            <div class="modal_overlay"></div>
+        <div class="main_modal_information">
 
-            <!-- Chứa full nội dung = X + cotainer + img-->
-            <div class="modal_body">
-                
-                <!-- Chứa nội dung = X + cotainer + img-->
-                <div class="infor_form">
-                    <!-- Dấu x -->
-                    <div class="modal_close">
-                        <i class="fa-solid fa-xmark" style="font-size: 30px"></i>
-                    </div>
-
-                    <div class="infor_form_container_img">
-                        <!-- Nội dung = Những input + button -->
-                        <div class="infor_container">
-                            <!--All Input + button-->
-                            <div class="infor_container_content">
-    
-                                <div class="infor_container_title">
-                                    <i class="fas fa-user-edit" style="font-size: 20px;"></i>
-                                    <h1>Information</h1>
-                                </div>
-    
-                                <!-- GroupInput = Tiêu đề input, input và text eror -->
-                                <div class="group_input">
-                                    <div class="modal_input_title_text">Họ tên</div>
-                                    <input type="text" class = "input_text">
-                                    <!-- Phần này được xử lý trong js - innerText -->
-                                    <div class="input_text_error"></div>
-                                </div>
-                                <div class="group_input">
-                                    <div class="modal_input_title_text">Ngày sinh</div>
-                                    <!-- Kiểu dữ kiệu date đã được set min và max -->
-                                    <input type="date" class="input_text" min="1930-01-01" max="2024-12-31">
-                                    <!-- Phần này được xử lý trong js - innerText -->
-                                    <div class="input_text_error"></div>
-                                </div>
-                                <div class="group_input">
-                                    <div class="modal_input_title_text">Địa chỉ</div>
-                                    <input type="text" class="input_text">
-                                    <!-- Phần này được xử lý trong js - innerText -->
-                                    <div class="input_text_error"></div>
-                                </div>
-                                <div class="group_input">
-                                    <div class="modal_input_title_text">Giới tính</div>
-                                
-                                    <select name="" id="" class="input_text input_text_gender">
-                                        <option value="0">Nam</option>
-                                        <option value="1">Nữ</option>
-                                    </select>
-                                    
-                                </div>
-    
-                                <!-- Chứa nút nhấn xác nhận -->
-                                <div class="infor_container_confirm">
-                                    <div class="btn infor_container_confirm_btn">Xác nhận</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="infor_form_img">
-                            <div class=""><img src="/Users/img/loginImg.png" class="infor_form_img_PNG"></div>
-                            <h1>Let customize</h1>
-                            <h3>your information</h3>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
         </div>
     </div>
-    <script src="/Users/src/js/scripts.js"></script>
-    <script src="/Users/vendors/js/calendar.js"></script>
+    <div id="saveFullJS">
+        <script src="/Users/src/js/scripts.js"></script>
+    </div>
 </body>
+
 </html>

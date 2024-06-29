@@ -148,14 +148,188 @@
 .container_main{
     width: 95%;
     height: 90%;
-
-    display: flex;
-    position: relative;
 }
 
 
 
+.container_main_function{
+    width: 100%;
+    height: 100%;
+    /* background: var(--white-color); */
+    /* position: relative; */
+
+    font-size: 1.3em;
+}
+
+.container_main_func_attendance{
+    /* position: relative; */
+    width: 100%;
+    height: 100%;
+    background: var(--white-color);
+    border-radius: var(--border-radius-big);
+}
+
+.attendance_container_form{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.attendance_container_form_content{
+    position: relative;
+    width: 57%;
+    height: 100%;
+
+    padding: 40px;
+}
+
+.attendance_container_form_title{
+    display: flex;
+}
+
+.attendance_form_today{
+    margin-top: 40px;
+    display: flex;
+
+    justify-content: space-between;
+}
+
+.attendance_form_today>div:first-child{
+    align-items: center;
+    display: flex;
+}
+
+.attendance_form_today .btn{
+    width: 30%;
+}
+
+/* CSS for table */
+.table-container {
+    position: relative;
+    width: 100%;
+    height: 70%;
+    overflow-y: auto; /* Only vertical scrollbar */
+    border: 1px solid #ccc; /* Optional: add a border for better visibility */
+}
+
+.content-table {
+
+    position: relative;
+    border-collapse: collapse;
+    /* Dính sát các ô với nhau */
+    
+    min-width: 400px;
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table td {
+    padding: 12px 0px 12px 0px;
+}
+
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+    /* font-weight: bold; */
+    color: var(--nav-hover-color);
+}
 
 
+.table-header{
+    margin-top: 40px;
+    display: flex;
+    width: 100%;
+    height: 44px;
+}
 
+.table-header .thead{
+    /* position: absolute; */
+    background-color: var(--nav-hover-color);
+    color: var(--white-color);
+    text-align: left;
+    font-weight: bold;
 
+    line-height: 44px;
+
+}
+
+tr td:nth-child(1), .theadSTT{
+    width: 10%;
+    padding-left: 12px;
+}
+
+tr td:nth-child(2), .theadID{
+    width: 10%;
+}
+
+tr td:nth-child(3){
+    width: 40%;
+}
+.theadName{
+    width: calc(40% - 12px);
+}
+
+tr td:nth-child(4), .theadGender{
+    width: 20%;
+}
+.theadAttend{
+    width: calc(20% + 12px);
+}
+tr td:nth-child(5){
+    width: 20%;
+    text-align: center;
+}
+
+.attendance_container_form_img{
+    width: 50%;
+    height: 100%;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+.attendance_container_form_img>div{
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border-radius: var(--border-radius-big);
+    background-color: var(--button-hover-color);
+}
+
+.teacher_img{
+    height: 70%;
+
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.teacher_img img{
+    width: 70%;
+}
+
+.attendance_container_form_img_title{
+    height: 30%; 
+}
+
+.attendance_container_form_img_title>h1{
+    text-align: center;
+    line-height: 100px;
+}
+.attendance_container_form_img_title>p{
+    text-align: center;
+}

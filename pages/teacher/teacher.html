@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeacherUI</title>
+
+    <link rel="stylesheet" href="teacher.css">
+    <link rel="stylesheet" href="/Users/src/css/base.css">
+    <link rel="stylesheet" href="/Users/pages/modalInfor/modal.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="main">
+        <div id="header">
+            <ul id="nav">
+                <li>   
+                    <div class="nav_li_content">QUẢN LÝ TKB
+                    <!-- Đặt thẻ div ở đây để xử lý hover, khi chữ đi lên thì subnav không đi theo-->
+                        <i class="fa-solid fa-angle-down" style="font-weight: bolder; padding-left: 5px;"></i>
+                    </div> 
+                    
+                    <ul class="subnav">
+                        <!-- <li class="nav_subnav_liSelect" id="1">Lớp 1</li>
+                        <li class="nav_subnav_liSelect" id="2">Lớp 2</li> -->
+                    </ul>
+                </li>
+            </ul>
+            <div class="header_logo header_logo_user">
+                <div class="nav_li_content">
+                    <i class="fa-solid fa-circle-user"></i>
+                </div>
+                <!-- Đặt thẻ div ở đây để xử lý hover, khi logo đi lên thì subnav không đi theo-->
+
+                <ul class="subnav">
+                    <li id="subnav_li_infor">THÔNG TIN CÁ NHÂN   |<i class="fa-solid fa-gear", style="padding-left: 5px;"></i></li>
+                    <li id="subnav_li_logout">ĐĂNG XUẤT  |<i class="fa-solid fa-right-from-bracket", style="padding-left: 5px;"></i></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Nội dung chính-->
+        <div class="container">
+            <div class="container_main">
+                <div class="container_main_function">
+                    <!-- Route nội dung -->
+                    <div class="container_main_func_attendance">
+                        <div class="attendance_container_form">
+                            <div class="attendance_container_form_content">
+
+                                <div class="attendance_container_form_title">
+                                    <i class="fa-solid fa-list-check" style="margin-right: 5px;"></i>
+                                    <h1>Attendance</h1>
+                                </div>
+
+                               
+                                <div class="attendance_form_today">
+                                    <div>
+                                        <h3>Thời gian :</h3>
+                                        <h3 class="attendance_today" style="margin-left: 4px;"></h3>
+                                    </div>
+
+                                    <div class="btn">Lưu điểm danh</div>
+                                </div>
+
+                                <div class="table-header">
+                                    <div class="thead theadSTT">STT</div>
+                                    <div class="thead theadID">ID</div>
+                                    <div class="thead theadName">Họ và tên</div>
+                                    <div class="thead theadGender">Giới tính</div>
+                                    <div class="thead theadAttend">Điểm danh</div>
+                                </div>
+                                <div class="table-container">
+                                    <table class="content-table">
+                                        <tbody>
+                                        
+                                        </tbody>
+                                      </table>
+                                </div>
+                            </div>
+                            <div class="attendance_container_form_img">
+                                <div>
+                                    <div class="teacher_img">
+                                        <img src="/Users/img/teacher.png" alt="">
+                                    </div>
+
+                                    <div class="attendance_container_form_img_title">
+                                        <h1>Education</h1>
+                                        <p>the most powerful weapon</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lớp modal cho thông tin cá nhân-->
+        <div class="main_modal_information">
+            
+        </div>
+
+    </div>
+
+    <script src="/Users/pages/teacher/teacher.js"></script>
+</body>
+
+</html>

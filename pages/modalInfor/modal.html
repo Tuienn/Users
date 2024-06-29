@@ -1,0 +1,71 @@
+<div class="modal">
+    <!-- Lớp phủ mờ -->
+    <div class="modal_overlay"></div>
+
+    <!-- Chứa full nội dung = X + cotainer + img-->
+    <div class="modal_body">
+        
+        <!-- Chứa nội dung = X + cotainer + img-->
+        <div class="infor_form">
+            <!-- Dấu x -->
+            <div class="modal_close">
+                <i class="fa-solid fa-xmark" style="font-size: 30px"></i>
+            </div>
+
+            <div class="infor_form_container_img">
+                <!-- Nội dung = Những input + button -->
+                <div class="infor_container">
+                    <!--All Input + button-->
+                    <div class="infor_container_content">
+
+                        <div class="infor_container_title">
+                            <i class="fas fa-user-edit" style="font-size: 20px;"></i>
+                            <h1>Information</h1>
+                        </div>
+
+                        <!-- GroupInput = Tiêu đề input, input và text eror -->
+                        <div class="group_input">
+                            <div class="modal_input_title_text">Họ tên</div>
+                            <input type="text" class = "input_text">
+                            <!-- Phần này được xử lý trong js - innerText -->
+                            <div class="input_text_error"></div>
+                        </div>
+                        <div class="group_input">
+                            <div class="modal_input_title_text">Ngày sinh</div>
+                            <!-- Kiểu dữ kiệu date đã được set min và max -->
+                            <input type="date" class="input_text" min="1930-01-01" max="2024-12-31">
+                            <!-- Phần này được xử lý trong js - innerText -->
+                            <div class="input_text_error"></div>
+                        </div>
+                        <div class="group_input">
+                            <div class="modal_input_title_text">Địa chỉ</div>
+                            <input type="text" class="input_text">
+                            <!-- Phần này được xử lý trong js - innerText -->
+                            <div class="input_text_error"></div>
+                        </div>
+                        <div class="group_input">
+                            <div class="modal_input_title_text">Giới tính</div>
+                        
+                            <select name="" id="" class="input_text input_text_gender">
+                                <option value="0">Nam</option>
+                                <option value="1">Nữ</option>
+                            </select>                                    
+                        </div>
+
+                        <!-- Chứa nút nhấn xác nhận -->
+                        <div class="infor_container_confirm">
+                            <div class="btn infor_container_confirm_btn">Xác nhận</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infor_form_img">
+                    <div class=""><img src="/Users/img/loginImg.png" class="infor_form_img_PNG"></div>
+                    <h1>Let customize</h1>
+                    <h3>your information</h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

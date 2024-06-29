@@ -1,0 +1,386 @@
+/* Payment */
+.container_main_function{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.payment_content{
+    /* background-color: var(--white-color);
+    border-radius: var(--border-radius-big); */
+
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+/* Payment effect */
+.container_payment{
+    background-color: var(--white-color);
+    border-radius: var(--border-radius-big);
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+
+    position: relative;
+    overflow: hidden;
+    
+    width: 100%;
+    height: 100%;
+}
+
+.form-payment-container{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.3rem;
+}
+
+.sign-in{
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.container_payment.active .sign-in{
+    transform: translateX(100%);
+}
+
+.sign-up{
+    left: 0;
+    width: 50%;
+    opacity: 1;
+    z-index: 1;
+}
+
+.container_payment.active .sign-up{
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s;
+}
+
+@keyframes move{
+    0%, 49.99%{
+        opacity: 0;
+        z-index: 1;
+    }
+    50%, 100%{
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+
+.toggle-container{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 150px 0 0 100px;
+    z-index: 9;
+}
+
+.container_payment.active .toggle-container{
+    transform: translateX(-100%);
+    border-radius: 0 150px 100px 0;
+}
+
+.toggle{
+    height: 100%;
+    background-color: #c2bfbf;
+
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.container_payment.active .toggle{
+    transform: translateX(50%);
+}
+
+.toggle-panel{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+  
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+    display: flex;
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; */
+}
+
+.toggel-panel-content{
+    width: 80%;
+}
+
+.payment_title{
+    background-color: var(--nav-hover-color);
+    width: 20%;
+} 
+
+.payment_title>div{
+    width: 100%;
+    height: calc(100%/5);
+
+    font-size: 3rem;
+    font-weight:600;
+
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+
+.toggle-left{
+    transform: translateX(-200%);
+}
+
+.container_payment.active .toggle-left{
+    transform: translateX(0);
+}
+
+.toggle-right{
+    right: 0;
+    transform: translateX(0);
+}
+
+.container_payment.active .toggle-right{
+    transform: translateX(200%);
+}
+
+
+.container_payment .btn{
+    width: 170px;
+}
+
+
+.toggel-panel-content img{
+    margin-top: 30px;
+    width: 80%;
+}
+
+.toggel-panel-content h1{
+    margin-top: 30px;
+    font-weight: 800;
+    font-size: 2.5rem;
+}
+
+.toggel-panel-content h3{
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.toggel-panel-content .btn{
+    margin-top: 50px;
+    margin-left: calc(50% - 170px/2);
+}
+
+.container_payment form{
+    background-color: var(--white-color);    
+
+    width: 95%;
+    height: 95%;
+}
+
+.viewFee-container{
+    padding: 20px;
+}
+
+.payment-container-title{
+    width: 100%;
+    display: flex;
+    height: 40px;
+
+    align-items: flex-end; /* Căn sát lề dưới */
+}
+
+.payment-container-title-icon{
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.payment_content .input_text{
+    font-size: 1.3rem;
+}
+
+.viewFee-container-content-select-child i{
+    position: absolute;
+    right: 5px;
+    top: 30%;
+    pointer-events: none;
+}
+.viewFee-container-content-select-child{
+    margin-top: 30px;
+    width: 50%;
+
+    position: relative;
+    display: flex;
+}
+
+.viewFee-container-content-select-child .input_text{
+    cursor: pointer;
+    width: 100%;
+}
+
+/* .viewFee-container-content-select-child:hover .subnav{
+    display: grid;
+} */
+
+.viewFee-container-content-select-child .subnav{
+    position: absolute;
+    /* display: grid; */
+    width: 100%;
+    z-index: 2;
+}
+
+.viewFee-container-content-select-child .subnav li{
+    display: flex;
+    line-height: 40px;
+}
+
+.viewFee-container-fee{
+    margin-top: 30px;
+    position: relative;
+}
+
+.viewFee-container-fee-group-infor{
+    position: relative;
+
+    width: 100%;
+    height: 300px;
+
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.viewFee-container-fee-title{
+    position: absolute;
+    background-color: var(--white-color);
+    z-index: 1;
+}
+
+.group-information-fee{
+    margin-top: 13px;
+
+    width: 100%;
+    
+    border: 1px solid var(--black-color);
+    border-radius: var(--border-radius-big);
+    padding: 30px;
+
+    display: grid;
+    /* display: flex;*/
+}
+
+.information-fee{
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.information-fee>div{
+    display: flex;
+    align-items: center;
+}
+
+.information-fee>div:first-child{
+    width: 50%;
+    height: 100%;
+    border-right: 2px solid var(--black-color);
+    margin-right: 15px;
+}
+
+.viewFee-container-fee-input-money{
+    padding-top: 30px;
+    display: flex;
+}
+
+.group_input_money{
+    width: 40%;
+    margin-right: 5%;
+}
+
+.input_text_error{
+    display: block;
+    height: 20px;
+}
+
+.total_money{
+    width: calc(100% - 40% - 5%);
+    display: flex;
+
+    align-items: center;
+    justify-self: start;
+}
+
+.total_money h3{
+    width: 35%;
+}
+
+.total_money_result{
+    height: 100%;
+    width: 65%;
+    border: 1px solid var(--black-color);
+    border-radius: 10px;
+
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 10px;
+
+    font-size: 2rem;
+    overflow: hidden;
+}
+
+/* Lựa chọn 2 */
+.pay-container{
+    padding: 20px;
+}
+.infomation-pay{
+    margin-top: 20px;
+    width: 70%;
+}
+
+.information-pay-selectBank img{
+    width: 28%;
+    border-radius: var(--border-radius-big);
+    border: 1px solid var(--black-color);
+    margin-left: 10px;
+
+    cursor: pointer;
+}
+.information-pay-selectBank img:first-child{
+    border: 2px solid blue;
+}
+
+.information-pay-selectBank img:hover{
+    cursor: pointer;
+    border: 2px solid;
+}
+
+.information-pay-title{
+    margin-bottom: 10px;
+}
+
+.pay-container-content .btn{
+    margin-top: 50px;
+    width: 70%;
+}

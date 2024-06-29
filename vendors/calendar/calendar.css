@@ -2,7 +2,7 @@
 .wrapper{
   margin-top: 1px;
   width: 450px;
-  height: 490px;
+  height: 450px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.12);
@@ -27,6 +27,11 @@ header .icons span{
   font-size: 1.9rem;
   user-select: none;
   border-radius: 50%;
+
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .icons span:last-child{
   margin-right: -10px;
@@ -59,16 +64,16 @@ header .current-date{
   font-weight: 500;
   cursor: default;
 }
-.calendar .days li{
-  z-index: 1;
+.calendar .days li.day{
+  z-index: 0;
   cursor: pointer;
   position: relative;
   margin-top: 30px;
 }
-.days li.inactive{
+.days li.day_inactive{
   color: #aaa;
 }
-.days li.active{
+.days li.day_now{
   color: #fff;
 }
 .days li::before{
@@ -82,9 +87,9 @@ header .current-date{
   border-radius: 50%;
   transform: translate(-50%, -50%);
 }
-.days li.active::before{
+.days li.day_now::before{
   background: #9B59B6;
 }
-.days li:not(.active):hover::before{
+.days li:not(.day_now):hover::before{
   background: #f2f2f2;
 }

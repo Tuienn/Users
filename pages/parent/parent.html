@@ -1,0 +1,134 @@
+<div class="payment_content">
+    <!-- start -->
+    <div class="container_payment" id="container_payment">
+        <div class="form-payment-container sign-up">
+            <form class="pay-container">
+                <div class="pay-container-title payment-container-title">
+                    <i class="fa-solid fa-building-columns payment-container-title-icon"></i>
+                    <h1>Pay</h1>
+                </div>
+
+                <div class="pay-container-content">
+                    <div class="group-information-pay">
+                        <div class="infomation-pay information-pay-selectBank">
+                            <div class="information-pay-title">Chọn ngân hàng</div>
+                            <div class="information-pay-selectBank">
+                                <img src="https://rubicmarketing.com/wp-content/uploads/2022/11/y-nghia-logo-mb-bank-2.jpg" alt="">
+                                <img src="https://inhoangha.com/uploads/logo-agribank.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="infomation-pay">
+                            <div class="information-pay-title">Số tài khoản</div>
+                            <input type="text" class="information-pay-input input_text" placeholder="00-000-000">
+                            <div class="input_text_error"></div>
+                        </div>
+                        <div class="infomation-pay">
+                            <div class="information-pay-title">Chủ tài khoản</div>
+                            <input type="text" class="information-pay-input input_text" placeholder="VD: NGUYEN VAN A">
+                            <div class="input_text_error"></div>
+                        </div>
+                        <div class="infomation-pay">
+                            <div class="information-pay-title">Số tiền</div>
+                            <input type="text" class="information-pay-input input_text" readonly>
+                        </div>
+                    </div>
+
+                    <div class="btn">Thanh toán</div>
+                </div>
+            </form>
+        </div>
+        <div class="form-payment-container sign-in">
+            <form class="viewFee-container">
+                <div class="viewFee-container-title payment-container-title">
+                    <i class="fa-solid fa-pen-to-square payment-container-title-icon"></i>
+                    <h1>View tution</h1>
+                </div>
+                
+                <div class="viewFee-container-content">
+                    <div class="viewFee-container-content-select-child">
+                        <input type="text" value="Chọn con" class="input_text" readonly>
+                        <i class="fa-solid fa-angle-down"></i>
+                        <ul class="subnav">
+                            <!-- <li>Con 1</li>
+                            <li>Con 2</li> -->
+                        </ul>
+                    </div>
+
+                    <div class="viewFee-container-fee">
+                        <div class="viewFee-container-fee-group-infor">
+                            <div class="viewFee-container-fee-title">
+                                <h2>Thông tin học phí</h2>
+                            </div>
+                            <div class="group-information-fee">
+                                <div class="information-fee">
+                                    <div>Học phí phải đóng</div>
+                                    <div class="result_tution"></div>
+                                </div>
+                                <div class="information-fee">
+                                    <div>Học phí đã đóng</div>
+                                    <div class="result_tution"></div>
+                                </div>
+                                <div class="information-fee">
+                                    <div>Số tiền còn nợ</div>
+                                    <div class="result_tution" style="color: red;"></div>
+                                </div>
+                                <div class="information-fee">
+                                    <div>Số dư</div>
+                                    <div class="result_tution" style="color: green;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="viewFee-container-fee-input-money">
+                            <div class="group_input_money">
+                                <input type="text" placeholder="Nhập số tiền (VND)" class="input_text">
+                                <div class="input_text_error"></div>
+                                <div class="btn">Xác nhận</div>
+                            </div>
+
+                            <div class="total_money">
+                                <h3>Tổng tiền</h3>
+                                <div class="total_money_result">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <div class="payment_title">
+                        <div>S</div>
+                        <div>T</div>
+                        <div>E</div>
+                        <div>P</div>
+                        <div>2</div>
+                    </div>
+                    <div class="toggel-panel-content">
+                        <img src="img/payment.png" alt="">
+                        <h1>Payment</h1>
+                        <h3>Thank you for placing your trust in us and for promptly paying your tuition fees</h3>
+                        <div class="hidden btn" id="login">Trở lại</div>
+                    </div>
+                    
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <div class="toggel-panel-content">
+                        <img src="img/payment.png" alt="">
+                        <h1>Payment</h1>
+                        <h3>Thank you for placing your trust in us and for promptly paying your tuition fees</h3>
+                        <div class="hidden btn" id="register">Tiếp tục</div>
+                    </div>
+                    <div class="payment_title">
+                        <div>S</div>
+                        <div>T</div>
+                        <div>E</div>
+                        <div>P</div>
+                        <div>1</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
