@@ -1,32 +1,4 @@
-console.log('student.js executed')
-// function loadContent(mainDiv, file, scriptFile) {
-//     fetch(file)
-//         .then(response => response.text())
-//         .then(data => {
-//             mainDiv.innerHTML = data;
-//             if (scriptFile) {
-//                 loadScript(scriptFile);
-//             }
-//         })
-//         .catch(error => {
-//             mainDiv.innerHTML = '<p>Error loading content.</p>';
-//             console.error('Error:', error);
-//         });
-//         console.log('loadContent calendar executed');
-// }
-
-// // Function to load and execute an external script file
-// function loadScript(scriptFile) {
-//     const script = document.createElement('script');
-//     script.src = scriptFile;
-//     script.onload = function() {
-//         console.log(`${scriptFile} loaded successfully.`);
-//     };
-//     document.body.appendChild(script);
-// }
-
-// const mainDiv = document.querySelector('.calendar');
-// loadContent(mainDiv,'/Users/vendors/calendar/calendar.html', '/Users/vendors/calendar/calendar.js');  
+// Lấy các thẻ cần thiết
 var daysTag = document.querySelector(".days"),
 currentDate = document.querySelector(".current-date"),
 prevNextIcon = document.querySelectorAll(".icons span");
@@ -51,7 +23,7 @@ function returnFomatDate(date, month, year){
 
 function renderCalendar() {
     // Lấy thứ đầu tiên của tháng với 0=T2, 1=T3, 2=T4...
-    let firstDayofMonth = new Date(currYear, currMonth, 1).getDay();
+    let firstDayofMonth = new Date(currYear, currMonth, 1).getDay()-1;
     // Lấy ngày cuối cùng của tháng (28/29/30/31)
     let lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate();
     // Lấy thứ cuối cùng của tháng
@@ -82,25 +54,27 @@ function renderCalendar() {
 
     // Vòng for chạy từ thứ cuối cùng của tháng trở lại(set cho các con số mờ)
     for (let i = firstDayofMonth; i > 0; i--) { // creating li of previous month last days
-        liTag += `<li class="day day_inactive" title= "${returnFomatDate(lastDateofLastMonth - i + 1, prevMonth, prevYear)}">${lastDateofLastMonth - i + 1}</li>`;
+        liTag += `<li class="day_inactive" title= "${returnFomatDate(lastDateofLastMonth - i + 1, prevMonth, prevYear)}">${lastDateofLastMonth - i + 1}</li>`;
     }
     // Vòng lặp for set cho các thứ trong tháng hiện tại
     for (let i = 1; i <= lastDateofMonth; i++) { // creating li of all days of current month
         // Ngày hiện tại thì có classNam là active, còn không className là day
         let isToday = (i === date.getDate() && currMonth === new Date().getMonth() 
-                     && currYear === new Date().getFullYear()) ? "day day_now" : "day day_active";
+                     && currYear === new Date().getFullYear()) ? "day_now" : "day_active";
         liTag += `<li class="${isToday}" title="${returnFomatDate(i, currMonth, currYear)}">${i}</li>`;
     }
     // Vòng for chạy từ thứ cuối cùng của tháng hiện tại đển thứ của tháng tiếp
     for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
-        liTag += `<li class="day day_inactive" title= "${returnFomatDate(i - lastDayofMonth + 1, nextMonth, nextYear)}">${i - lastDayofMonth + 1}</li>`;
+        liTag += `<li class="day_inactive" title= "${returnFomatDate(i - lastDayofMonth + 1, nextMonth, nextYear)}">${i - lastDayofMonth + 1}</li>`;
     }
     currentDate.innerText = `${months[currMonth]} - ${currYear}`; // passing current mon and yr as currentDate text
     daysTag.innerHTML = liTag;
 
     handleEventSelectDay();
+    if(arrayAttendance != undefined && arraySchedule != undefined){
+        handleDataCalendarArray();
+    }
 }
-
 renderCalendar();
 
 prevNextIcon.forEach(icon => { // getting prev and next icons
@@ -125,13 +99,27 @@ var flag = false;
 
 // Sự kiện chọn ngày
 function handleEventSelectDay(){
-    var group_day_selected = document.querySelectorAll('.day');
+    var group_day_selected = document.querySelectorAll('.days li');
 
     var day_selected = document.querySelector('.calendar_day_selected_title');
-    var day_work = document.querySelector('.calendar_day_selected_work');
+    var day_work = document.querySelector('.calendar_day_selected_work ul li:last-child div');
     
     function selectDay(calendar_day_selected){
         day_selected.innerText = calendar_day_selected.title;
+
+        if(calendar_day_selected.classList.contains('day_pass')){
+            day_work.innerText = "Đã diểm danh";
+        }
+        else if(calendar_day_selected.classList.contains('day_miss')){
+            day_work.innerText = "Chưa diểm danh";
+        }
+        else if(calendar_day_selected.classList.contains('day_tomorrow')){
+            day_work.innerText = "Chưa học";
+        }
+        else{
+            document.querySelector('.calendar_day_selected_work ul li:first-child div').innerText = "Nghỉ"
+            day_work.innerText = "Nghỉ"
+        }
     }
     
     for(let i=0; i<group_day_selected.length; i++){
@@ -147,6 +135,154 @@ function handleEventSelectDay(){
         });
     }
 }
+
+// Xử lý API
+var studentSpecialAPI = 'http://localhost:3000/specialAPIStudent'
+var classFollowChildGET= 'http://localhost:3000/classFollowChildGET'
+var ScheduleFollowStudentAPI = 'http://localhost:3000/getScheuleFollowStudent'
+
+function handleStudentData(callback1, callback2){
+    fetch(specialAPI_student)
+        .then(function(response){
+            return response.json();
+        })
+        .then(callback1)
+        .then(callback2)
+        .catch(function(error){
+            console.log(error)
+        })
+}
+function startStudent(){
+    handleStudentData(getStudentNearest)
+}
+
+startStudent();
+
+function getStudentNearest(arrayStudent_spe){
+
+    var array = arrayStudent_spe.map(function(student){
+        return{
+            studentId: student.userId
+        }
+    })
+    var urlId = array[array.length-1].studentId;
+
+    //Dòng quan trọng
+    returnArrayCalendar(urlId, getCalendar, handleDataCalendarArray)
+    getClassFollowChild(urlId, renderClassInfor)
+}
+function getClassFollowChild(urlID, callback){
+    fetch(classFollowChildGET+'/'+urlID)
+        .then(function(response){
+            return response.json();
+        })
+        .then(callback)
+        .catch(function(error){
+            console.log(error)
+        })
+}
+
+//***Bỏ class ở dataClass.class
+function renderClassInfor(dataClass){
+    // console.log(dataClass);
+    var classInfor = {
+        url: dataClass.class.url,
+        grade: dataClass.class.grade,
+        className: dataClass.class.className,
+        year: dataClass.class.year,
+        shift: dataClass.class.scheduleDto.shift,
+        numOfSession: dataClass.class.scheduleDto.numOfSession
+    }  
+    document.querySelector('.container_first_img img').src = classInfor.url;
+    var group_infor_class_content = document.querySelectorAll('.infor_class_content')
+    group_infor_class_content[0].innerText = classInfor.grade;
+    group_infor_class_content[1].innerText = classInfor.className;
+    group_infor_class_content[2].innerText = classInfor.year;
+    group_infor_class_content[3].innerText = classInfor.numOfSession;
+
+    setTimeSession(classInfor.shift)
+}
+function setTimeSession(shift){
+    var time;
+    if(shift==1){
+        time = "Sáng 7h -> 9h"
+    }
+    else if(shift==2){
+        time = "Chiều 14h -> 16h"
+    }
+    else{
+        time = "Tối 18h -> 20h"
+    }
+
+    document.querySelector('.calendar_day_selected_work ul li div').innerText=time
+}
+//Lấy lịch học và lịch điểm danh
+var arraySchedule = [];
+var arrayAttendance = [];
+
+function returnArrayCalendar(urlID, callback1, callback2){
+    // console.log(urlID);
+    fetch(ScheduleFollowStudentAPI+'/'+urlID)
+        .then(function(response){
+            return response.json(); 
+        })
+        .then(callback1)
+        .then(callback2)
+        .catch(function(error){
+            console.log(error)
+        })
+}  
+
+function getCalendar(arrayCalendar){
+    var array = {
+        array1 : arrayCalendar.schedule,
+        array2 : arrayCalendar.attendance
+    }
+    arraySchedule = array.array1;
+    arrayAttendance = array.array2;
+}  
+
+function findTagLi_title(title){
+    var group_day_selected = document.querySelectorAll('.days li');
+    for(let i=0; i<group_day_selected.length; i++){
+        if(group_day_selected[i].title==title){
+            return group_day_selected[i];
+        }
+    }
+    return null
+}
+
+function handleDataCalendarArray(){
+    // console.log(arraySchedule);
+    // console.log(arrayAttendance);
+    var lengthAttend = arrayAttendance.length;
+    var lengthSchedule = arraySchedule.length;
+    var group_day_selected = document.querySelectorAll('.days li');
+    var day_work = document.querySelector('.calendar_day_selected_work ul li:last-child div');
+
+    for(let i=0; i<lengthAttend; i++){
+        var tag = findTagLi_title(group_day_selected[i].title);
+        
+        if(tag.title == arraySchedule[i]){
+            // console.log(tag.title, arraySchedule[i]);
+            if(arrayAttendance[i]==true){
+                tag.classList.add('day_pass');
+                
+            }
+            else{
+                tag.classList.add('day_miss');
+            }
+        }
+    }
+    for(let i=lengthAttend; i<lengthSchedule; i++){
+        var tag = findTagLi_title(group_day_selected[i].title);
+        if(tag!=null){
+            tag.classList.add('day_tomorrow');
+            
+        }
+    }
+}
+
 
 
 

@@ -1,3 +1,43 @@
+//Thông báo
+var groupButton = document.querySelectorAll('.buttons button');
+function displayNoti(content, value){
+
+    var notifi = document.querySelector('section');
+    notifi.setAttribute('style', 'display: flex');
+    notifi.classList.add('active');
+    var groupButton = document.querySelectorAll('.buttons button');
+
+    if(value==1){
+        notifi.querySelector('.success').style = 'display: flex'
+        notifi.querySelector('.success').querySelector('h3').innerText = content;
+    }
+    else if(value==2){
+        notifi.querySelector('.warning').style = 'display: flex'
+        notifi.querySelector('.warning').querySelector('h3').innerText = content;
+    }
+    else{
+        notifi.querySelector('.question').style = 'display: flex'
+        notifi.querySelector('.question').querySelector('h3').innerText = content;
+    }
+}
+function quit(){
+    var notifi = document.querySelector('section');
+    notifi.style = 'display: none';
+    notifi.querySelector('.success').style = 'display: none';
+    notifi.querySelector('.warning').style = 'display: none';
+    notifi.querySelector('.question').style = 'display: none';
+}
+function reloadPage(){
+    location.reload()
+}
+function quitNoti(btn){
+    btn.addEventListener("click", quit)
+}
+function quitNotiAndReload(btn){
+    btn.addEventListener("click", quit);
+    reloadPage()
+}
+
 // Xử lý phần đóng và mở modal
 var btn_subnav_li_infor = document.querySelector('#subnav_li_infor')
 function open_inforModal(){
@@ -120,3 +160,4 @@ for(let i=0; i<3; i++){
         }
     })  
 }
+

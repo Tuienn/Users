@@ -8,10 +8,12 @@
     <!-- Link css -->
     <link rel="stylesheet" href="src/css/base.css">
     <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="vendors/notification/noti.css">
 
     <link rel="stylesheet" href="pages/student/student.css">
     <link rel="stylesheet" href="pages/parent/parent.css">
     <link rel="stylesheet" href="pages/modalInfor/modal.css">
+    <link rel="stylesheet" href="pages/teacher/teacher.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
@@ -22,20 +24,29 @@
         <!-- Nội dung header -->
         <div id="header">
             <ul id="nav">
-                <li>
+                <li id="student_parent">
                     <div class="nav_li_content">QUẢN LÝ TKB
                         <!-- Đặt thẻ div ở đây để xử lý hover, khi chữ đi lên thì subnav không đi theo-->
                         <i class="fa-solid fa-angle-down" style="font-weight: bolder; padding-left: 5px;"></i>
                     </div>
 
                     <ul class="subnav">
-                        <li class="nav_subnav_liSelect" id="select_1">Con 1</li>
-                        <li class="nav_subnav_liSelect" id="select_2">Con 2</li>
+
                     </ul>
                 </li>
-                <li id="">
-                    <div class="nav_li_content nav_li_content_pay">THANH TOÁN</div>
+                <li id="parent">
+                    <div class="nav_li_content">THANH TOÁN</div>
                     <!-- Đặt thẻ div ở đây để xử lý hover -->
+                </li>
+                <li id="teacher">
+                    <div class="nav_li_content">ĐIỂM DANH
+                        <i class="fa-solid fa-angle-down" style="font-weight: bolder; padding-left: 5px;"></i>
+                    </div>
+
+                    <ul class="subnav"></ul>
+                </li>
+                <li id="student">
+                    <div class="nav_li_content">XEM LỊCH</div>
                 </li>
             </ul>
             <div class="header_logo header_logo_user">
@@ -47,6 +58,12 @@
                 <ul class="subnav">
                     <li id="subnav_li_infor">THÔNG TIN CÁ NHÂN |<i class="fa-solid fa-gear" ,
                             style="padding-left: 5px;"></i></li>
+                    <li id="subnav_li_infor">
+                        <a href="https://help.shopee.vn/portal/4">
+                            LIÊN HỆ HỖ TRỢ |<i class="fa-solid fa-headset"
+                            style="padding-left: 5px"></i>
+                        </a>
+                    </li>
                     <li id="subnav_li_logout">ĐĂNG XUẤT |<i class="fa-solid fa-right-from-bracket" ,
                             style="padding-left: 5px;"></i></li>
                 </ul>
@@ -66,10 +83,55 @@
         <div class="main_modal_information">
 
         </div>
+
+        <!-- Thông báo -->
+        <section>
+            <div class="overlay"></div>
+
+            <div class="modal-box success" style="display: none;">
+                <i class="fa-solid fa-circle-check"></i>
+                <h2>Success</h2>
+                <h3></h3>
+
+                <div class="buttons">
+                    <button>OKAY</button>
+                </div>
+            </div>
+
+            <div class="modal-box warning" style="display: none;">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <h2>Warning</h2>
+                <h3></h3>
+
+                <div class="buttons">
+                    <button>OKAY</button>
+                </div>
+            </div>
+
+            <div class="modal-box question" style="display: none;">
+                <i class="fa-solid fa-circle-question"></i>
+                <h2>Confirm</h2>
+                <h3></h3>
+
+                <div class="buttons">
+                    <button>HỦY</button>
+                    <button>OKAY</button>
+                </div>
+            </div>
+        </section>
     </div>
     <div id="saveFullJS">
-        <script src="/Users/src/js/scripts.js"></script>
+        <script src="src/js/scripts.js"></script>
     </div>
+
+    <!-- <script>
+        document.cookie = `name=toan; path=/`
+        document.cookie = `pass=toan; path=/`
+        console.log(document.cookie)
+        document.cookie = `name=; path=/`
+        document.cookie = `pass=; path=/`
+        console.log(document.cookie)
+    </script> -->
 </body>
 
 </html>

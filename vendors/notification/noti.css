@@ -1,0 +1,119 @@
+/* Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+section {
+    /* height: 100%;
+    width: 100%; */
+    /* background: #e3f2fd; */
+    display: none;
+    position: fixed;
+
+    z-index: 1000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  padding: 14px 22px;
+  border: none;
+  background: #4070f4;
+  border-radius: 6px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #265df2;
+}
+.question button:first-child{
+  background: rgb(172, 170, 170);
+}
+.question button:first-child:hover{
+  background: rgb(142, 141, 141)
+}
+
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  /* opacity: 0; */
+  pointer-events: none;
+}
+section.active .overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+@keyframes transmissionAnimation {
+  0% {
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.modal-box {
+  position: relative;
+  margin: auto;
+
+  margin-left: 50%;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* max-width: 380px;
+  width: 100%; */
+  width: 400px;
+  padding: 30px 20px;
+  border-radius: 24px;
+  background-color: #fff;
+  opacity: 0;
+  
+  transform: translate(-50%, -50%);
+  animation: transmissionAnimation 1s ease-in-out infinite alternate;
+ 
+}
+section.active .modal-box {
+  opacity: 1;
+  pointer-events: auto;
+}
+.success i {
+  font-size: 70px;
+  color: #4070f4;
+}
+.warning i {
+  font-size: 70px;
+  color: red;
+}
+.question i {
+  font-size: 70px;
+  color: rgb(217, 217, 6);
+}
+.modal-box h2 {
+  margin-top: 20px;
+  font-size: 25px;
+  font-weight: 500;
+  color: #333;
+}
+.modal-box h3 {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+  text-align: center;
+}
+.modal-box .buttons {
+  margin-top: 25px;
+}
+.modal-box button {
+  font-size: 14px;
+  padding: 6px 12px;
+  margin: 0 10px;
+}

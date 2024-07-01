@@ -153,6 +153,32 @@
     position: relative;
 }
 
+.notification{
+    position: relative;
+    width: 20%;
+    height: 20%;
+    background-color: var(--white-color);
+    border-radius: var(--border-radius-big);
+    margin: auto;
+    padding: 10px;
+    font-size: 1.5rem;
+
+    animation: Growth ease-in 0.22s;
+}
+
+.content_noti{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 30px;
+}
+
+.notiQuestion i{
+    position: absolute;
+    color: blue;
+    top: 12px;
+    left: 10px
+}
 
 
 

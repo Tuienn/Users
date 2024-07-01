@@ -30,7 +30,7 @@
     /* Chiều dài và rộng theo cha */
 
     /* Màu nền trong suốt */
-    background: rgb(0, 0, 0, 0.4);
+    background: rgb(0, 0, 0, 0.3);
     /* Màu phủ trong suốt */
 }
 
@@ -56,21 +56,21 @@
     background-color: var(--white-color);
     border-radius: var(--border-radius-big);
     padding: 30px;
-
+    
     /* Vị trí */
     margin: auto;
     /* Căn giữa nội dung toàn trang*/
-
+    
     /* Đặc tính */
     position: relative;
     /* Không ảnh hưởng kích thước phần tử khác, cũng giúp modal_body nổi lên trên modal_overlay*/
-
+    
     /* Hiệu ứng */
     animation: Growth ease-in 0.22s;
     /*Hiệu ứng ảnh to dần  */
 }
 
-/* Gần như modal_form */
+/* Gần như modal */
 .infor_form {
     width: 730px;
     display: block;
